@@ -636,13 +636,21 @@ set(
 	x509v3/v3err.c
 )
 
-if(UNIX)
-	set(CRYPTO_SRC ${CRYPTO_SRC} bio/b_posix.c)
-	set(CRYPTO_SRC ${CRYPTO_SRC} bio/bss_log.c)
-	set(CRYPTO_SRC ${CRYPTO_SRC} ui/ui_openssl.c)
+if (NOT CYGWIN)
+    if(UNIX)
+    	set(CRYPTO_SRC ${CRYPTO_SRC} bio/b_posix.c)
+    	set(CRYPTO_SRC ${CRYPTO_SRC} bio/bss_log.c)
+    	set(CRYPTO_SRC ${CRYPTO_SRC} ui/ui_openssl.c)
+    endif()
 endif()
 
 if(WIN32)
+	set(CRYPTO_SRC ${CRYPTO_SRC} bio/b_win.c)
+	set(CRYPTO_UNEXPORT ${CRYPTO_UNEXPORT} BIO_s_log)
+	set(CRYPTO_SRC ${CRYPTO_SRC} ui/ui_openssl_win.c)
+endif()
+
+if(CYGWIN)
 	set(CRYPTO_SRC ${CRYPTO_SRC} bio/b_win.c)
 	set(CRYPTO_UNEXPORT ${CRYPTO_UNEXPORT} BIO_s_log)
 	set(CRYPTO_SRC ${CRYPTO_SRC} ui/ui_openssl_win.c)
