@@ -1,6 +1,5 @@
 pwd
-mkdir _test
-cd _test
+cd _build
 
 INCLUDE=$cur__install/include
 
