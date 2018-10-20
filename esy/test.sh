@@ -24,12 +24,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$cur__lib
 
 echo "Augmented path: $PATH"
 
-if which x86_64-w64-mingw32-gcc; then
-  echo "Copying binaries..."
-  cp $cur__bin/*.dll .
-fi
-
-echo "Test executable path:"
-ls -a .
-
 ./test.exe

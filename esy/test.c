@@ -1,6 +1,6 @@
 /* From: https://wiki.openssl.org/index.php/Libcrypto_API */
 
-#include <openssl/conf.h>
+#include <openssl/opensslconf.h>
 #include <openssl/evp.h>
 #include <openssl/err.h>
 
