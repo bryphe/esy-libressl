@@ -1,7 +1,7 @@
 cd _build
 
-ls -a /lib/libssl.o
-ls -a /usr/lib/libssl.o
+ls -a /lib/libssl*
+ls -a /usr/lib/libssl*
 
 exit 1
 
